@@ -1,0 +1,96 @@
+      <app-nav-menu></app-nav-menu>
+<form #addEmployeeForm="ngForm" (ngSubmit)="submitAddEmp(addEmployeeForm)" class='m-2'> 
+
+    <div class="form-group col-md-10 col-sm-10 col-lg-6">
+         <label for="empName">Employee Name</label>
+         <input type="text" id="empName" class="form-control" 
+           placeholder="Text Box"
+          required [(ngModel)]="empName" name="empName"
+          #pickedName="ngModel" >
+
+          <div *ngIf="pickedName.invalid && (pickedName.dirty || pickedName.touched) "
+          class="alert alert-danger" >
+              Employee Name is required!
+          </div>
+    </div>
+
+    <div class="form-group col-md-10 col-sm-10 col-lg-6">
+        <label for="department"> Department </label>
+        <select type="text" id="department" class="form-control font_shippori"
+         required [(ngModel)]="department" name="department"
+         #pickedDepartment="ngModel">
+           <option [ngValue]="null" disabled>Select Department</option>
+           <option *ngFor="let dep of departments" [ngValue]="dep.name">
+               {{ dep.name }}
+           </option>
+        </select>
+         
+         <div *ngIf="!pickedDepartment.valid && pickedDepartment.touched "
+          class="alert alert-danger">
+             Employee Department is required!
+         </div>
+    </div>
+
+    <div class="form-group col-md-10 col-sm-10 col-lg-6">
+        <label for="empCode">Employee Code</label>
+        <input type="text" id="empCode" class="form-control" 
+            (keypress)="checkPositiveNum($event)"
+            placeholder="Only positive numbers are allowed!"  name="empCode"
+            required [(ngModel)]="empCode" 
+            #pickedCode="ngModel" >
+         
+
+         <div *ngIf="pickedCode.invalid && (pickedCode.dirty || pickedCode.touched) "
+         class="alert alert-danger" >
+             Employee Code is required!
+         </div>
+   </div>
+
+    <div class="form-group col-md-10 col-sm-10 col-lg-6">
+        <label for="dateOfBirth"> Birthday </label>
+        <input type="text" id="dateOfBirth" class="form-control" 
+            placeholder="date picker" bsDatepicker
+            [bsConfig]="{containerClass:'theme-dark-blue'}"
+            [bsConfig]="{showWeekNumbers:false}"
+            [bsConfig]="{dateInputFormat:'DD/MM/YYYY'}"
+            required [(ngModel)]="dateOfBirth" name="dateOfBirth" 
+            #pickedBirthday="ngModel" >
+
+            <!-- placement="bottom" -->
+
+        <div *ngIf="pickedBirthday.invalid && (pickedBirthday.dirty || pickedBirthday.touched) "
+        class="alert alert-danger" >
+            Employee birthday is required!
+        </div>
+    </div>
+<div >
+
+</div>
+    <div class="font_shippori font-weight-bold col-md-10 col-sm-10">
+        Gender
+       <label class="mr-5 ml-3">
+           <input type="radio" value="male" required
+           name="gender" [(ngModel)]="gender" #pickedGender="ngModel">
+           Male
+       </label>
+       <label >
+            <input type="radio" value="female" required
+            name="gender" [(ngModel)]="gender" #pickedGender="ngModel">
+            Female
+       </label>
+
+       <div *ngIf="pickedGender.invalid && (pickedGender.dirty || pickedGender.touched) "
+         class="alert alert-danger" >
+             Employee Code is required!
+         </div>
+    </div>
+
+    <div class="col-md-4 col-sm-4">
+        <button  [disabled]="!addEmployeeForm.form.valid"
+        class="btn btn-secondary px-5 font_shippori">
+        ADD
+        </button>
+    </div>
+    
+</form>
+

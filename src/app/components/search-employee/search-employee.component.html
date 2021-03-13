@@ -1,0 +1,41 @@
+
+<app-nav-menu></app-nav-menu>
+
+<form #searchEmployeeForm="ngForm" (ngSubmit)="submitSearchEmp(searchEmployeeForm)" class='m-2 '>
+    <div class="form-group col-md-10 col-sm-10 col-lg-5">
+        <label for="empName">Employee Name</label>
+        <input type="text" id="empName" class="form-control" 
+          placeholder="Text Box"
+         required [(ngModel)]="empName" name="empName"
+         #pickedName="ngModel" >
+
+         <div *ngIf="pickedName.invalid && (pickedName.dirty || pickedName.touched) "
+         class="alert alert-danger" >
+             Employee Name is required!
+         </div>
+   </div>
+
+   <div class="form-group col-md-10 col-sm-10 col-lg-5">
+       <label for="department"> Department </label>
+       <select type="text" id="department" class="form-control font_shippori"
+        required [(ngModel)]="department" name="department"
+        #pickedDepartment="ngModel">
+          <option [ngValue]="null" disabled>Select Department</option>
+          <option *ngFor="let dep of departments" [ngValue]="dep.name">
+              {{ dep.name }}
+          </option>
+       </select>
+        
+        <div *ngIf="!pickedDepartment.valid && pickedDepartment.touched "
+         class="alert alert-danger">
+            Employee Department is required!
+        </div>
+   </div>
+
+   <div class="col-md-6 col-sm-4 col-lg-2">
+        <button  [disabled]="!searchEmployeeForm.form.valid"
+        class="btn btn-secondary px-5 font_shippori">
+        Search
+        </button>
+    </div>
+</form>

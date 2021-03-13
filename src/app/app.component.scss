@@ -1,0 +1,34 @@
+
+h1{
+    text-align: center;
+}
+
+main{
+    .navigations-container{
+        width: 150px;
+        text-align: center;
+        // margin:auto;
+    }
+
+    .router-container{
+        border : 0.5px solid lightgray;
+        border-radius: 5px;
+    }
+}
+
+@media (max-width: 560px){
+    main{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+         
+        .navigations-container{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            // margin:10px auto;
+        }
+    }
+}

@@ -1,0 +1,58 @@
+
+<nav class="navbar navbar-light bg-light">
+
+    <a class="navbar-brand col-xs-10 col-sm-10 col-md-3" href="#"> 
+        <p class="h2"> logo </p>
+    </a>
+
+
+    <span class="h6 col-sm-10 col-xs-10 col-md-3">
+        {{ currentDate | date: 'd ' + 'LLL ' + 'YYYY'}}
+    </span>
+    
+    <form class="form-inline col-xs-10 col-sm-10 col-md-5">
+
+        <div class="input-group">
+        
+           <!-- <div class="input-group-prepend">    
+                 <fa-icon [icon]="faSortDown"></fa-icon>
+            </div> -->
+            <!-- <img [src]={{}}> -->
+            
+            <select type="text" class="form-control font_shippori"
+                placeholder="Select User"
+                required [(ngModel)]="userName" name="userName"
+                #pickedUser="ngModel" (change)="selectedUser(pickedUser)">
+                <option [ngValue]="null" disabled>Select User</option>
+                <option  *ngFor="let user of users" [ngValue]="user.name">
+                    {{ user.name }}
+                    <!-- <img [src]='user.imgUrl'> -->
+                </option>
+            </select>
+            
+        </div>
+    </form>
+
+  </nav>
+  
+
+
+            <!-- <div class="input-group">
+           
+                <div class="input-group-prepend">    
+                     <fa-icon [icon]="faSortDown"></fa-icon>
+                    
+                </div>
+                
+                <select type="text" class="form-control font_shippori"
+                    placeholder="Select User"
+                    required [(ngModel)]="user" name="user"
+                    #pickedUser="ngModel" (change)="selectedUser(pickedUser)">
+                    <option [ngValue]="null" disabled>Select User</option>
+                    <option  *ngFor="let user of users" [ngValue]="user.name">
+                        {{ user.name }}
+                       
+                    </option>
+                </select>
+                
+            </div> -->
